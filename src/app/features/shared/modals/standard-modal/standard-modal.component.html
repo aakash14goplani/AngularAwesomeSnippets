@@ -1,0 +1,9 @@
+<div class="backdrop" #backdrop></div>
+<div class="modal" #modal>
+  <h2 class="modal__title">{{ data.header }}</h2>
+  <h3 class="modal__title-description" *ngIf="data.header2">
+    {{ data.header2 }}
+  </h3>
+  <div class="modal__body" #modalBody></div>
+  <div class="modal__actions" #modalFooter></div>
+</div>

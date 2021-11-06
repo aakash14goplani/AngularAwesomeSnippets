@@ -1,0 +1,22 @@
+.alert {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid #eee;
+  border-left-width: 0.25rem;
+  border-radius: 0.25rem;
+  border-left-color: #f0ad4e;
+
+  .left {
+    align-self: flex-start;
+  }
+
+  .right {
+    align-self: flex-end;
+  }
+
+  .center {
+    align-self: center;
+  }
+}

@@ -1,0 +1,6 @@
+<ng-container *ngIf="!!data">
+  <div [ngClass]="['alert', data?.alertType]">
+    <h2 [ngClass]="['alert__title', data?.headerAlign]">{{ data?.header }}</h2>
+    <p class="alert__content">{{ data?.bodyContent }}</p>
+  </div>
+</ng-container>

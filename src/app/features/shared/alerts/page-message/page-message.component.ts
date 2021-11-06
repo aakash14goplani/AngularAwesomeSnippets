@@ -1,7 +1,7 @@
 import {
   AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Renderer2, ViewChild
 } from '@angular/core';
-import { DynamicComponent } from 'src/app/features/dynamic-components/models/dynamic-component.model';
+import { DynamicComponent } from '../../../../features/dynamic-components/models/dynamic-component.model';
 import { AlertData } from '../models/alert.model';
 
 @Component({

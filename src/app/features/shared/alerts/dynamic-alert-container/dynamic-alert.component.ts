@@ -3,9 +3,9 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
-import { DynamicContainerSelectorDirective } from 'src/app/features/dynamic-components/directives/dynamic-container-selector.directive';
-import { ComponentConfig } from 'src/app/features/dynamic-components/models/component-config.model';
-import { ConfigurationService } from 'src/app/features/dynamic-components/services/configuration.service';
+import { DynamicContainerSelectorDirective } from '../../../../features/dynamic-components/directives/dynamic-container-selector.directive';
+import { ComponentConfig } from '../../../../features/dynamic-components/models/component-config.model';
+import { ConfigurationService } from '../../../../features/dynamic-components/services/configuration.service';
 
 @Component({
   selector: 'app-dynamic-alert-container',

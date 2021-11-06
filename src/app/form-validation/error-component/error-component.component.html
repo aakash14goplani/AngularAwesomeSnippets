@@ -1,0 +1,8 @@
+<ng-container *ngFor="let errorMessage of data.errorMessages">
+  <span class="icon icon-attention"></span>
+  <div class="help-block with-errors">{{ errorMessage }}</div>
+</ng-container>
+<ng-container *ngFor="let warningMessage of data.warningMessages">
+  <span class="icon icon-attention-alt"></span>
+  <div>{{ warningMessage }}</div>
+</ng-container>

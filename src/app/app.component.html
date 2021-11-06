@@ -1,31 +1,6 @@
-<app-header></app-header>
 <main>
-  <div class="dynamic-components">
-    <app-standard-alert [data]="standardAlertMessage"></app-standard-alert>
-    <app-dynamic-modal-container></app-dynamic-modal-container>
-  </div>
-
-  <div class="options">
-    <button class="standard-modal" (click)="triggerStandardModal($event)">
-      Standard Modal
-    </button>
-    <button class="loading-modal" (click)="triggerLoadingModal($event)">
-      Loading Modal
-    </button>
-    <button
-      class="page-message-alerts"
-      (click)="triggerPageMessageAlert($event)"
-    >
-      {{ !displayPageMessage ? "Display" : "Hide" }} Page Message
-    </button>
-  </div>
-
-  <div class="page-message">
-    <app-dynamic-alert-container></app-dynamic-alert-container>
-  </div>
-
   <div class="app-main">
+    <h2>{{ title }}</h2>
     <router-outlet></router-outlet>
   </div>
 </main>
-<app-footer></app-footer>

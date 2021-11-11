@@ -1,6 +1,21 @@
 <main>
   <div class="app-main">
-    <h2>{{ title }}</h2>
-    <router-outlet></router-outlet>
+    <div class="navigation-options">
+      <a
+        [routerLink]="'template-driven-form'"
+        routerLinkActive="active"
+        class="navigation-options__option"
+        >Template Driven Form</a
+      >
+      <a
+        [routerLink]="'model-driven-form'"
+        class="navigation-options__option"
+        routerLinkActive="active"
+        >Model Driven Form</a
+      >
+    </div>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </main>

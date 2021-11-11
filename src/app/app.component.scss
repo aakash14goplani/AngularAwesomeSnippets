@@ -1,25 +1,21 @@
 main {
-  padding: 0 4rem;
+  padding: 0 2rem;
 
-  .dynamic-components {
+  .navigation-options {
     display: flex;
-  }
+    justify-content: space-evenly;
+    margin: 1rem;
 
-  .options {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    max-width: 20rem;
-
-    button {
-      font-size: 1rem;
-      background: white;
-      border: 1px solid #ccc;
-      color: lightcoral;
+    &__option {
+      text-decoration: none;
+      color: dodgerblue;
+      font-weight: 500;
       padding: 1rem;
-      margin: 1rem;
-      word-break: break-all;
-      cursor: pointer;
+
+      &:hover,
+      &.active {
+        color: firebrick;
+      }
     }
   }
 }

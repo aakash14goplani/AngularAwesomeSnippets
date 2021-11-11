@@ -1,1 +1,122 @@
-<p>model-driven-form works!</p>
+<div class="model-driven-form">
+  <form
+    [formGroup]="modelForm"
+    (ngSubmit)="onSubmit()"
+    novalidate="true"
+    role="form"
+  >
+    <!-- textbox -->
+    <div
+      class="form-group user-data"
+      appFormGroupValidation
+      validationMsgId="userData"
+      formGroupName="userData"
+    >
+      <div class="firstname">
+        <label for="firstname">First Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="firstname"
+          required
+          [pattern]="validationPatterns.name"
+        />
+      </div>
+      <div class="lastname">
+        <label for="lastName">Last Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="lastname"
+          required
+          [pattern]="validationPatterns.name"
+        />
+      </div>
+    </div>
+
+    <!-- textarea -->
+    <div class="form-group address">
+      <label for="address" for="address">Address:</label>
+      <textarea
+        formControlName="address"
+        rows="3"
+        class="form-control"
+        appFormControlValidation
+        validationMsgId="address"
+        [pattern]="validationPatterns.address"
+        required
+      ></textarea>
+    </div>
+
+    <!-- select-dropdown -->
+    <div class="form-group country">
+      <label for="secret">Select Country:</label>
+      <select
+        class="form-control"
+        formControlName="country"
+        appFormControlValidation
+        validationMsgId="country"
+        required
+      >
+        <option value="" [selected]="true">Select One</option>
+        <option value="India">India</option>
+        <option value="countryA">Country A</option>
+        <option value="countryB">Country B</option>
+      </select>
+    </div>
+
+    <!-- radio -->
+    <div class="form-group gender">
+      <label for="gender">Select Gender:</label>
+      <div class="radio" *ngFor="let gender of genders">
+        <input
+          type="radio"
+          name="gender"
+          [value]="gender"
+          formControlName="gender"
+          appFormControlValidation
+          validationMsgId="gender"
+          required
+        />
+        <label>{{ gender }}</label>
+      </div>
+    </div>
+
+    <!-- checkbox -->
+    <div
+      class="form-group checkboxes"
+      appFormGroupValidation
+      validationMsgId="checkboxes"
+      formGroupName="checkboxOptions"
+    >
+      <div class="terms-and-condition">
+        <input
+          type="checkbox"
+          id="tnc"
+          formControlName="tnc"
+          value="tnc"
+          required
+        />
+        <label for="tnc"> Accept TnC</label>
+      </div>
+      <div class="sign-for-newsletter">
+        <input
+          type="checkbox"
+          value="sign-in"
+          id="sign-for-newsletter"
+          formControlName="sign-for-newsletter"
+          required
+        />
+        <label for="sign-for-newsletter"> Sign For News letters</label>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="reset" (click)="resetFormValues()">Reset</button>
+      <button type="submit" [disabled]="!modelForm.valid && submitted">
+        Submit
+      </button>
+    </div>
+  </form>
+  <p *ngIf="modelForm.valid && displayForm">{{ displayForm | json }}</p>
+</div>

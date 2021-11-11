@@ -1,0 +1,80 @@
+.model-driven-form {
+  border: 1px solid #ccc;
+  padding: 2rem;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+
+    &::after {
+      content: "";
+      border-top: 1px solid #ccc;
+      margin: 1rem 0;
+      display: inline-block;
+      width: 100%;
+      vertical-align: middle;
+    }
+
+    .ng-invalid.ng-touched {
+      border: 1px solid red;
+    }
+  }
+
+  .user-data {
+    .firstname,
+    .lastname {
+      margin: 1rem 0;
+
+      label {
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  select,
+  textarea {
+    width: 50%;
+  }
+
+  .checkboxes {
+    div {
+      margin-bottom: 1rem;
+    }
+
+    &::after {
+      content: unset;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      margin: 2rem auto;
+      width: 40%;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      background-color: cornsilk;
+      color: black;
+      cursor: pointer;
+
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+@media (min-width: 40rem) {
+  .model-driven-form {
+    width: 50%;
+    margin: 0 auto;
+  }
+}

@@ -1,4 +1,4 @@
-import { FormGroup } from '@angular/forms';
+import { AbstractControl, FormGroup } from '@angular/forms';
 
 /**
  * @description Iterate through all of FormGroup's controls and marks them dirty and touched.
@@ -7,8 +7,8 @@ import { FormGroup } from '@angular/forms';
  * @returns void
  */
 export const validateForm = (group: FormGroup): void => {
-  Object.keys(group.controls).forEach((key) => {
-    const value = group.controls[key];
+  Object.keys(group.controls).forEach((key: string) => {
+    const value: AbstractControl = group.controls[key];
     if (value instanceof FormGroup) {
       value.markAsDirty();
       value.markAllAsTouched();

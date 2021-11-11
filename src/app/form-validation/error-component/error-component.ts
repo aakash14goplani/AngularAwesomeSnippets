@@ -3,10 +3,10 @@ import { DynamicComponent } from 'src/app/dynamic-components/dynamic-component.m
 
 @Component({
   selector: 'app-error-component',
-  templateUrl: './error-component.component.html',
-  styleUrls: ['./error-component.component.scss']
+  templateUrl: './error-component.html',
+  styleUrls: ['./error-component.scss']
 })
-export class ErrorComponentComponent implements DynamicComponent {
+export class ErrorComponent implements DynamicComponent {
   data: any;
 
   constructor(public elementRef: ElementRef) { }

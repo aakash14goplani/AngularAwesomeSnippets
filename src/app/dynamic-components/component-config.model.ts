@@ -1,5 +1,5 @@
 export interface ComponentConfig {
-  componentType: 'modal' | 'alert';
+  componentType: 'validation';
   dynamicComponentType: any;
   data: any;
 }

@@ -4,8 +4,8 @@ import {
 } from '@angular/core';
 import { FormGroupDirective, NgControl, ValidationErrors } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ComponentConfig } from 'src/app/dynamic-components/component-config.model';
-import { DynamicComponentService } from 'src/app/dynamic-components/dynamic-component.service';
+import { ComponentConfig } from '../../dynamic-components/component-config.model';
+import { DynamicComponentService } from '../../dynamic-components/dynamic-component.service';
 import { ErrorComponent } from '../error-component/error-component';
 import { FormValidationService } from '../services/form-validation.service';
 

@@ -39,10 +39,6 @@ export class ModelDrivenFormComponent implements OnInit {
     });
   }
 
-  get radioFormControl(): FormControl {
-    return this.modelForm.get('gender') as FormControl;
-  }
-
   onSubmit(): void {
     this.submitted = true;
     validateForm(this.modelForm);

@@ -7,9 +7,9 @@ import {
   ControlContainer, FormGroup, NgModelGroup, ValidationErrors
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ComponentConfig } from 'src/app/dynamic-components/component-config.model';
-import { DynamicComponentService } from 'src/app/dynamic-components/dynamic-component.service';
-import { DynamicItem } from 'src/app/dynamic-components/dynamic-item.model';
+import { ComponentConfig } from '../../dynamic-components/component-config.model';
+import { DynamicComponentService } from '../../dynamic-components/dynamic-component.service';
+import { DynamicItem } from '../../dynamic-components/dynamic-item.model';
 import { ErrorComponent } from '../error-component/error-component';
 import { FormValidationService } from '../services/form-validation.service';
 

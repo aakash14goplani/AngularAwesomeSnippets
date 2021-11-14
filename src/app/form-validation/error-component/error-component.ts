@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { DynamicComponent } from 'src/app/dynamic-components/dynamic-component.model';
+import { DynamicComponent } from '../../dynamic-components/dynamic-component.model';
 
 @Component({
   selector: 'app-error-component',

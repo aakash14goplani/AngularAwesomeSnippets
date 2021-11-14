@@ -4,9 +4,10 @@ import { ModelDrivenFormComponent } from './model-driven-form/model-driven-form.
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'template-driven-form', pathMatch: 'full' },
   { path: 'template-driven-form', component: TemplateDrivenFormComponent },
   { path: 'model-driven-form', component: ModelDrivenFormComponent },
-  { path: '**', component: TemplateDrivenFormComponent }
+  { path: '**', redirectTo: 'template-driven-form', pathMatch: 'full' }
 ];
 
 @NgModule({

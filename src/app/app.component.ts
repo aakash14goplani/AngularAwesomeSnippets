@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import * as supportedBrowsers from '../supportedBrowsers';
+import { detect } from 'detect-browser';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +9,12 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
-  title = '';
+  browserSupported = '';
+  title = 'Browser Support';
+  message = '';
 
   ngOnInit(): void {
-    this.title = 'Awesome Angular Snippets by Aakash';
+    this.browserSupported = supportedBrowsers.test(navigator.userAgent) ? '' : 'not';
+    this.message = `Your current browser ${detect()?.name} version ${detect()?.version} is ${this.browserSupported} supported`;
   }
 }

@@ -31,10 +31,14 @@ export class DynamicComponentService {
   loadComponentIntoNode(vcr: ViewContainerRef, dynamicItem: DynamicItem, parentNode = null): void {
     if (dynamicItem.component) {
       const componentFactory = this.componentFactoryResolver.resolveComponentFactory(dynamicItem.component);
-      const componentRef = vcr.createComponent(componentFactory);
-      const newChild = componentRef.injector.get(ErrorComponent).elementRef.nativeElement;
-      this.renderer.appendChild(parentNode || vcr.element.nativeElement, newChild);
-      (componentRef.instance as DynamicComponent).data = dynamicItem.data;
+      const parent = parentNode || vcr.element.nativeElement;
+      if (parent.innerHTML.indexOf(componentFactory.selector) < 0) {
+        vcr.clear();
+        const componentRef = vcr.createComponent(componentFactory);
+        const newChild = componentRef.injector.get(ErrorComponent).elementRef.nativeElement;
+        this.renderer.appendChild(parentNode || vcr.element.nativeElement, newChild);
+        (componentRef.instance as DynamicComponent).data = dynamicItem.data;
+      }
     }
   }
 

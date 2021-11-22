@@ -1,0 +1,25 @@
+.users {
+  display: flex;
+  flex-direction: column;
+
+  &__navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    a {
+      text-decoration: none;
+      padding: 1rem;
+
+      &.active {
+        color: deeppink;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}

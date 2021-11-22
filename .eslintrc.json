@@ -35,7 +35,7 @@
         "no-console": [
           "warn",
           {
-            "allow": ["error", "debug"]
+            "allow": ["error", "debug", "log"]
           }
         ],
         "@typescript-eslint/no-useless-constructor": "off",
@@ -70,7 +70,8 @@
         "@typescript-eslint/no-unused-expressions": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "import/order": "off",
-        "import/no-useless-path-segments": "off"
+        "import/no-useless-path-segments": "off",
+        "import/no-extraneous-dependencies": "off"
       }
     },
     {

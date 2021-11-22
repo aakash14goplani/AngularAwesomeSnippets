@@ -1,6 +1,34 @@
 <main>
   <div class="app-main">
     <h2>{{ title }}</h2>
-    <router-outlet></router-outlet>
+
+    <div class="navigation-options">
+      <ol class="navigation-options__items">
+        <li class="navigation-options__item">
+          <a (click)="onNavigationClick('landing')">Landing Page</a>
+        </li>
+        <li class="navigation-options__item">
+          <a (click)="onNavigationClick('users')">Users Page</a>
+        </li>
+        <li class="navigation-options__item">
+          <a (click)="onNavigationClick('misc')">Misc Page</a>
+        </li>
+        <li class="navigation-options__item">
+          <a
+            (click)="
+              onExternalNavigationClick(
+                'https://aakashgoplani.hashnode.dev/',
+                'true'
+              )
+            "
+            >External Page</a
+          >
+        </li>
+      </ol>
+    </div>
+
+    <div class="contents">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </main>

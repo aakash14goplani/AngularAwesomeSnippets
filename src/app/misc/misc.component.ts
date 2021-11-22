@@ -11,19 +11,19 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class MiscComponent implements OnInit, OnDestroy {
   showError = false;
-  private unsubscriber = new Subject<void>();
+  private unsubscriber: Subject<void> = new Subject<void>();
 
   constructor() { }
 
   ngOnInit(): void {
     console.group();
     console.log('Misc component created');
-    history.pushState(null, null as any, null);
+    history.pushState(null, '');
 
     fromEvent(window, 'popstate').pipe(
       takeUntil(this.unsubscriber)
     ).subscribe((_) => {
-      history.pushState(null, null as any, location.href);
+      history.pushState(null, '');
       this.showError = true;
     });
   }

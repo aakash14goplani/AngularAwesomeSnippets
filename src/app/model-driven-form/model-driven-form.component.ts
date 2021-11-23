@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl, FormArray, FormControl, FormGroup, Validators
+} from '@angular/forms';
 import { validateForm } from '../form-validation/helper-functions/validate-form';
 import { validationPatterns } from '../form-validation/helper-functions/validation-pattern';
 
@@ -9,47 +11,119 @@ import { validationPatterns } from '../form-validation/helper-functions/validati
   styleUrls: ['./model-driven-form.component.scss']
 })
 export class ModelDrivenFormComponent implements OnInit {
-  genders: string[] = ['Male', 'Female', 'Other'];
-  defaultCountry = '';
-  validationPatterns!: any;
-  displayForm = null;
-  modelForm!: FormGroup;
-  submitted = false;
+  animals: Array<string> = [];
+  roadCheckbox = false;
+  airCheckbox = false;
+  roadOptions = false;
+  formData!: FormGroup;
 
   constructor() { }
 
   ngOnInit() {
-    this.validationPatterns = validationPatterns;
+    this.animals = ['lion', 'tiger', 'zebra', 'fox'];
     this.buildForm();
   }
 
-  private buildForm(): void {
-    this.modelForm = new FormGroup({
-      userData: new FormGroup({
-        firstname: new FormControl(null, [Validators.required, Validators.pattern(validationPatterns.name)]),
-        lastname: new FormControl(null, [Validators.required, Validators.pattern(validationPatterns.name)])
-      }),
-      address: new FormControl(null, [Validators.required, Validators.pattern(validationPatterns.address)]),
-      country: new FormControl(null, [Validators.required]),
-      gender: new FormControl(null, [Validators.required]),
-      checkboxOptions: new FormGroup({
-        tnc: new FormControl(null, [Validators.required]),
-        'sign-for-newsletter': new FormControl(null, [Validators.required])
-      })
+  buildForm(): void {
+    this.formData = new FormGroup({
+      selectedAnimal: new FormArray([], [Validators.required]),
+      selectedTransport: new FormArray([], [Validators.required]),
+      roadName: new FormControl({ disabled: true, value: null }, Validators.required),
+      roadZip: new FormControl({ disabled: true, value: null }, Validators.required),
+      planeName: new FormControl({ disabled: true, value: null }, Validators.required),
+      planeZip: new FormControl({ disabled: true, value: null }, Validators.required)
     });
   }
 
-  onSubmit(): void {
-    this.submitted = true;
-    validateForm(this.modelForm);
-    if (this.modelForm.valid) {
-      this.displayForm = this.modelForm.value;
+  animalSelected(event: Event, animal: string): void {
+    const isChecked = (event.target as HTMLInputElement).checked;
+    const formArray = this.getSelectedAnimalFormArray();
+    if (isChecked) {
+      formArray.push(new FormControl(animal));
+    } else {
+      const index = formArray.controls.findIndex((item) => item.value === animal);
+      formArray.removeAt(index);
     }
   }
 
-  resetFormValues(): void {
-    this.submitted = false;
-    this.modelForm.reset();
-    this.modelForm.updateValueAndValidity();
+  transportSelected(event: Event, mode: string): void {
+    const isChecked = (event.target as HTMLInputElement).checked;
+    const formArray = this.getSelectedTransportFormArray();
+    if (isChecked) {
+      formArray.push(new FormControl(mode));
+      if (mode === 'ROAD') {
+        this.addRoadControllers();
+      }
+      if (mode === 'AIR') {
+        this.addAirControllers();
+      }
+    } else {
+      if (mode === 'ROAD') {
+        this.removeRoadControllers();
+      }
+      if (mode === 'AIR') {
+        this.removeAirControllers();
+      }
+      const index = formArray.controls.findIndex((item) => item.value === mode);
+      formArray.removeAt(index);
+    }
+  }
+
+  roadToggle(type: string): void {
+    if (type === 'rail') {
+      this.roadOptions = false;
+      this.removeRoadControllers();
+    } else {
+      this.roadOptions = true;
+      this.addRoadControllers();
+    }
+  }
+
+  getSelectedAnimalFormArray(): FormArray {
+    return this.formData.get('selectedAnimal') as FormArray;
+  }
+
+  getSelectedTransportFormArray(): FormArray {
+    return this.formData.get('selectedTransport') as FormArray;
+  }
+
+  getRoadNameControl(): AbstractControl {
+    return this.formData.get('roadName') as AbstractControl;
+  }
+
+  getRoadZip(): AbstractControl {
+    return this.formData.get('roadZip') as AbstractControl;
+  }
+
+  getPlaneNameControl(): AbstractControl {
+    return this.formData.get('planeName') as AbstractControl;
+  }
+
+  getPlaneZipControl(): AbstractControl {
+    return this.formData.get('planeZip') as AbstractControl;
+  }
+
+  addRoadControllers(): void {
+    this.getRoadNameControl().enable();
+    this.getRoadZip().enable();
+  }
+
+  removeRoadControllers(): void {
+    this.getRoadNameControl().disable();
+    this.getRoadZip().disable();
+  }
+
+  addAirControllers(): void {
+    this.getPlaneNameControl().enable();
+    this.getPlaneZipControl().enable();
+  }
+
+  removeAirControllers(): void {
+    this.getPlaneNameControl().disable();
+    this.getPlaneZipControl().disable();
+  }
+
+  onSubmit() {
+    console.log('form data: ', this.formData);
   }
 }

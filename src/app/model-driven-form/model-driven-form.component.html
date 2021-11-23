@@ -1,121 +1,87 @@
-<div class="model-driven-form">
-  <form
-    [formGroup]="modelForm"
-    (ngSubmit)="onSubmit()"
-    novalidate="true"
-    role="form"
-  >
-    <!-- textbox -->
-    <div
-      class="form-group user-data"
-      appFormGroupValidation
-      validationMsgId="userData"
-      formGroupName="userData"
-    >
-      <div class="firstname">
-        <label for="firstname">First Name:</label>
-        <input
-          type="text"
-          class="form-control"
-          formControlName="firstname"
-          required
-          [pattern]="validationPatterns.name"
-        />
-      </div>
-      <div class="lastname">
-        <label for="lastName">Last Name:</label>
-        <input
-          type="text"
-          class="form-control"
-          formControlName="lastname"
-          required
-          [pattern]="validationPatterns.name"
-        />
-      </div>
+<form [formGroup]="formData" (ngSubmit)="onSubmit()">
+  <div class="animal-checkbox-group" formArrayName="selectedAnimal">
+    <p>Selecting one animal is mandatory</p>
+    <div class="animal-item" *ngFor="let animal of animals">
+      <label>
+        <input type="checkbox" (change)="animalSelected($event, animal)" />
+      </label>
+      <label>{{ animal }}</label>
     </div>
+  </div>
+  <div class="transport-checkbox-group" formArrayName="selectedTransport">
+    <p>Selecting one transport mode is mandatory</p>
 
-    <!-- textarea -->
-    <div class="form-group address">
-      <label for="address" for="address">Address:</label>
-      <textarea
-        formControlName="address"
-        rows="3"
-        class="form-control"
-        appFormControlValidation
-        validationMsgId="address"
-        [pattern]="validationPatterns.address"
-        required
-      ></textarea>
-    </div>
-
-    <!-- select-dropdown -->
-    <div class="form-group country">
-      <label for="secret">Select Country:</label>
-      <select
-        class="form-control"
-        formControlName="country"
-        appFormControlValidation
-        validationMsgId="country"
-        required
-      >
-        <option value="" [selected]="true">Select One</option>
-        <option value="India">India</option>
-        <option value="countryA">Country A</option>
-        <option value="countryB">Country B</option>
-      </select>
-    </div>
-
-    <!-- radio -->
-    <div class="form-group gender">
-      <label for="gender">Select Gender:</label>
-      <div class="radio" *ngFor="let gender of genders">
-        <input
-          type="radio"
-          [value]="gender"
-          formControlName="gender"
-          appFormControlValidation
-          validationMsgId="gender"
-          required
-        />
-        <label>{{ gender }}</label>
-      </div>
-    </div>
-
-    <!-- checkbox -->
-    <div
-      class="form-group checkboxes"
-      appFormGroupValidation
-      validationMsgId="checkboxes"
-      formGroupName="checkboxOptions"
-    >
-      <div class="terms-and-condition">
+    <!-- option 1 -->
+    <div class="road-checkbox">
+      <label>
         <input
           type="checkbox"
-          id="tnc"
-          formControlName="tnc"
-          value="tnc"
-          required
+          (change)="
+            this.roadCheckbox = !this.roadCheckbox;
+            transportSelected($event, 'ROAD')
+          "
         />
-        <label for="tnc"> Accept TnC</label>
+      </label>
+      <label>ROADWAYS</label>
+    </div>
+    <div *ngIf="roadCheckbox">
+      <div class="road-type-selection">
+        <div>
+          <input
+            type="radio"
+            checked
+            name="abc"
+            (change)="roadToggle('rail')"
+          />Railway
+        </div>
+        <div>
+          <input type="radio" name="abc" (change)="roadToggle('road')" />Road
+          (more options)
+        </div>
       </div>
-      <div class="sign-for-newsletter">
+      <div class="road-types" *ngIf="roadOptions">
+        <p>below are mandatory</p>
+        <div>Road Name: <input type="text" formControlName="roadName" /></div>
+        <div>Zip Code: <input type="text" formControlName="roadZip" /></div>
+      </div>
+    </div>
+    <hr />
+
+    <!-- option 2 -->
+    <div class="air-checkbox">
+      <label>
         <input
           type="checkbox"
-          value="sign-in"
-          id="sign-for-newsletter"
-          formControlName="sign-for-newsletter"
-          required
+          (change)="
+            this.airCheckbox = !this.airCheckbox;
+            transportSelected($event, 'AIR')
+          "
         />
-        <label for="sign-for-newsletter"> Sign For News letters</label>
+      </label>
+      <label>AIRWAYS</label>
+    </div>
+    <div *ngIf="airCheckbox">
+      <p>below are mandatory</p>
+      <div class="air-types">
+        <div>Plane Name: <input type="text" formControlName="planeName" /></div>
+        <div>Plane Code: <input type="text" formControlName="planeZip" /></div>
       </div>
     </div>
+    <hr />
 
-    <div class="buttons">
-      <button type="reset" (click)="resetFormValues()">Reset</button>
-      <button type="submit" [disabled]="!modelForm.valid && submitted">
-        Submit
-      </button>
+    <!-- option 3 -->
+    <div class="water-checkbox">
+      <label>
+        <input type="checkbox" (change)="transportSelected($event, 'WATER')" />
+      </label>
+      <label>WATERWAYS</label>
     </div>
-  </form>
-  <p *ngIf="modelForm.valid && displayForm">{{ displayForm | json }}</p>
-</div>
+    <hr />
+  </div>
+  <div>
+    <div><button type="reset">RESET</button></div>
+    <div>
+      <button type="submit" [disabled]="!formData.valid">SUBMIT</button>
+    </div>
+  </div>
+</form>

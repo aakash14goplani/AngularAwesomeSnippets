@@ -1,21 +1,3 @@
 main {
   padding: 0 2rem;
-
-  .navigation-options {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 1rem;
-
-    &__option {
-      text-decoration: none;
-      color: dodgerblue;
-      font-weight: 500;
-      padding: 1rem;
-
-      &:hover,
-      &.active {
-        color: firebrick;
-      }
-    }
-  }
 }

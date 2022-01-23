@@ -1,6 +1,5 @@
-# Configuring Modals and Alerts using Dynamic Components in Angular
+# Angular Dynamic Form Validation - Template and Reactive Forms
 
-- [Blog](https://aakashgoplani.hashnode.dev/configuring-modals-and-alerts-using-dynamic-components-in-angular)
-- [LIVE DEMO](https://github-6zhjcx.stackblitz.io) P.S. it takes couple of minutes to load & run this link
-- [Stackbliz Link](https://stackblitz.com/edit/github-6zhjcx?file=src/app/app.component.ts)
-- [GitHub Link](https://github.com/aakash14goplani/AngularAwesomeSnippets/tree/dynamic_modal_and_alert_components)
+- [Blog](https://blog.aakashgoplani.in/angular-dynamic-form-validation-template-and-reactive-forms)
+- [Stackbliz Link](https://stackblitz.com/edit/angular-ivy-m4cjn4?file=src/app/app.component.ts)
+- [GitHub Link](https://github.com/aakash14goplani/AngularAwesomeSnippets/tree/dynamic_forms)

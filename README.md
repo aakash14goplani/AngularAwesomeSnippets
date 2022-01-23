@@ -1,6 +1,5 @@
-# Configuring Modals and Alerts using Dynamic Components in Angular
+# Manage list of supported browsers for your application in Angular
 
-- [Blog](https://aakashgoplani.hashnode.dev/configuring-modals-and-alerts-using-dynamic-components-in-angular)
-- [LIVE DEMO](https://github-6zhjcx.stackblitz.io) P.S. it takes couple of minutes to load & run this link
-- [Stackbliz Link](https://stackblitz.com/edit/github-6zhjcx?file=src/app/app.component.ts)
-- [GitHub Link](https://github.com/aakash14goplani/AngularAwesomeSnippets/tree/dynamic_modal_and_alert_components)
+- [Blog](https://blog.aakashgoplani.in/manage-list-of-supported-browsers-for-your-application-in-angular)
+- [Stackbliz Link](https://stackblitz.com/edit/angular-ivy-fe2mdj?file=src/app/app.component.ts)
+- [GitHub Link](https://github.com/aakash14goplani/AngularAwesomeSnippets/tree/browser_support)
